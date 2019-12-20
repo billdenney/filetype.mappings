@@ -1,0 +1,19 @@
+Package: filetype.mappings
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R: 
+    c(
+    person("Bill", "Denney", email="wdenney@humanpredictions.com", role=c("aut", "cre"), comment=c(ORCID="0000-0002-5759-428X")),
+    person("Clare", "Buckeridge", role="aut"),
+    person("Chay", "Lim", role="aut")
+    )
+Description: What the package does (one paragraph).
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Imports:
+    purrr
+Suggests: 
+    testthat (>= 2.1.0),
+    covr
+RoxygenNote: 7.0.2
