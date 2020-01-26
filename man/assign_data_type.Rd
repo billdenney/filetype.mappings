@@ -7,7 +7,7 @@
 assign_data_type(x, col_names, no_match = warning)
 }
 \arguments{
-\item{x}{A data.frame to detect the type}
+\item{x}{A data.frame or list of data.frames to detect the data type}
 
 \item{col_names}{A named list where the names are the data type and the
 values are required column names (additional column names may be present in

@@ -4,7 +4,7 @@
 #'   columns provided so that more matching names are matched rather than fewer.
 #'   Then, the first among the sorted `col_names` list is selected.
 #'
-#' @param x A data.frame to detect the type
+#' @param x A data.frame or list of data.frames to detect the data type
 #' @param col_names A named list where the names are the data type and the
 #'   values are required column names (additional column names may be present in
 #'   the data).
