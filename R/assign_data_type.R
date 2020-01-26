@@ -13,10 +13,10 @@
 #'   function taking a single character argument.)
 #' @return `x` with classes of the data type and "filetype_mappings" added.
 #' @export
-assign_data_type <- function(x, col_names, no_match=warning) {
+assign_data_type <- function(x, col_names, no_match=warning)
   UseMethod("assign_data_type")
-}
 
+#' @export
 assign_data_type.data.frame <- function(x, col_names, no_match=warning) {
   stopifnot(is.data.frame(x))
   col_names_sorted <- sort_col_names(col_names)
@@ -35,6 +35,7 @@ assign_data_type.data.frame <- function(x, col_names, no_match=warning) {
   x
 }
 
+#' @export
 assign_data_type.list <- function(x, col_names, no_match=warning) {
   lapply(
     x,
