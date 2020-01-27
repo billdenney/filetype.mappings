@@ -2,4 +2,6 @@
 
 S3method(assign_data_type,data.frame)
 S3method(assign_data_type,list)
+S3method(ftm_clean,default)
 export(assign_data_type)
+export(ftm_clean)
