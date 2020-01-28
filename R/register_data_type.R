@@ -1,7 +1,15 @@
 #' Generate a function to store and retrieve data column names for use with
 #' assign_data_type
-#' 
-#' @return A function to store and retrieve data column names
+#'
+#' @param overwrite Overwrite definitions if they already exist (with a warning)
+#'   or give an error if a name already exists.
+#' @param reset Remove all defined data types.
+#'
+#' @return `register_data_type()`: A function to store and retrieve data column
+#'   names.  The function returned by `register_data_type()`: When called with
+#'   no arguments, returns the currently stored list of data types.  When called
+#'   with a combination of `.l` and/or `...` arguments, updates the list and
+#'   returns it invisibly.
 #' @export
 #' @examples
 #' my_data_types <- register_data_type()
@@ -55,13 +63,6 @@ register_data_type <- function() {
 #' @param .l A a named list of data types.  Names are the name of the data
 #'   source and values are column names.
 #' @param ... Named arguments interpreted the same as `.l`
-#' @param overwrite Overwrite definitions if they already exist (with a warning)
-#'   or give an error if a name already exists.
-#' @param reset Remove all defined data types.
-#'
-#' @return When called with no arguments, returns the currently stored list of
-#'   data types.  When called with a combination of `.l` and/or `...` arguments,
-#'   updates the list and returns it invisibly.
 #' @rdname register_data_type
 #' @export
 register_data_type_instance <- register_data_type()

@@ -15,9 +15,18 @@ register_data_type_instance(.l = list(), ..., overwrite = FALSE, reset = FALSE)
 source and values are column names.}
 
 \item{...}{Named arguments interpreted the same as `.l`}
+
+\item{overwrite}{Overwrite definitions if they already exist (with a warning)
+or give an error if a name already exists.}
+
+\item{reset}{Remove all defined data types.}
 }
 \value{
-A function to store and retrieve data column names
+`register_data_type()`: A function to store and retrieve data column
+  names.  The function returned by `register_data_type()`: When called with
+  no arguments, returns the currently stored list of data types.  When called
+  with a combination of `.l` and/or `...` arguments, updates the list and
+  returns it invisibly.
 }
 \description{
 Generate a function to store and retrieve data column names for use with
