@@ -4,6 +4,8 @@
 #' @param overwrite Overwrite definitions if they already exist (with a warning)
 #'   or give an error if a name already exists.
 #' @param reset Remove all defined data types.
+#' @param only_good_names Should only names that make good R class names (starts
+#'   with a letter, only contains letters, numbers, and underscores) be allowed?
 #'
 #' @return `register_data_type()`: A function to store and retrieve data column
 #'   names.  The function returned by `register_data_type()`: When called with
@@ -17,7 +19,7 @@
 #' my_data_types()
 register_data_type <- function() {
   ftm_columns <- list()
-  function(.l=list(), ..., overwrite=FALSE, reset=FALSE) {
+  function(.l=list(), ..., overwrite=FALSE, only_good_names=TRUE, reset=FALSE) {
     # Combine all arguments
     args <- append(.l, list(...))
     if (reset) {
@@ -35,6 +37,21 @@ register_data_type <- function() {
         stop("All arguments must be named, including that list input must be a named list.")
       } else if (any(duplicated(names(args)))) {
         stop("No names may be duplicated in input arguments including between list and ... arguments.")
+      }
+      pattern_good_name <- "^[A-Za-z][A-Za-z0-9_]*$"
+      # Detect and warn about names that will not be good class names
+      bad_names <- grep(x=names(args), pattern=pattern_good_name, invert=TRUE, value=TRUE)
+      if (length(bad_names)) {
+        bad_name_message <-
+          paste0(
+            "The following name(s) do not make good R class names: ",
+            paste0('"', bad_names, '"', collapse=", ")
+          )
+        if (only_good_names) {
+          stop(bad_name_message)
+        } else {
+          warning(bad_name_message)
+        }
       }
       overwrite_names <- intersect(names(ftm_columns), names(args))
       if (length(overwrite_names)) {

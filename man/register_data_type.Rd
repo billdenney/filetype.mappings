@@ -8,7 +8,13 @@ assign_data_type}
 \usage{
 register_data_type()
 
-register_data_type_instance(.l = list(), ..., overwrite = FALSE, reset = FALSE)
+register_data_type_instance(
+  .l = list(),
+  ...,
+  overwrite = FALSE,
+  only_good_names = TRUE,
+  reset = FALSE
+)
 }
 \arguments{
 \item{.l}{A a named list of data types.  Names are the name of the data
@@ -18,6 +24,9 @@ source and values are column names.}
 
 \item{overwrite}{Overwrite definitions if they already exist (with a warning)
 or give an error if a name already exists.}
+
+\item{only_good_names}{Should only names that make good R class names (starts
+with a letter, only contains letters, numbers, and underscores) be allowed?}
 
 \item{reset}{Remove all defined data types.}
 }
